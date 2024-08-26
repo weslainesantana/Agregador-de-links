@@ -6,14 +6,14 @@
 }
 
 :root {
-    --text-color: white; 
+    --text-color: white;
     --bg-url: url(./assets/bg-mobile.jpg);
     --stroke-color: rgba(255, 255, 255, 0.5);
     --surface-color: rgba(255, 255, 255, 0.05);
     --surface-color-hover: rgba(0, 0, 0, 0.02);
     --highlight-color: rgba(255, 255, 255, 0.2);
     --switch-bg-url: url(./assets/MoonStars.svg);
-    
+
 }
 
 .light {
@@ -24,7 +24,7 @@
     --surface-color-hover: rgba(0, 0, 0, 0.02);
     --highlight-color: rgba(0, 0, 0, 0.1);
     --switch-bg-url: url(./assets/sun.svg);
-   
+
 }
 
 body {
@@ -50,6 +50,7 @@ body * {
     padding: 24px;
 
 }
+
 /* profile*/
 #profile img {
     display: block;
@@ -63,9 +64,10 @@ body * {
     line-height: 24px;
 
 }
+
 /*switch*/
 
-#switch{
+#switch {
     position: relative;
     width: 64px;
     margin: 4px auto;
@@ -82,14 +84,14 @@ body * {
     left: 0;
     z-index: 1;
     transform: translateY(-50%);
+    animation: slide-back 0.2s;
     /*imagem para frente*/
 
-    
+
 }
 
 .light #switch button {
-    right: 0;
-    left: initial;
+    animation: slide-in 0.2s forwards;
 }
 
 #switch span {
@@ -102,6 +104,11 @@ body * {
     -webkit-backdrop-filter: blur(4px);
     border-radius: 9999px;
 }
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
+}
+
 ul {
     list-style: none;
 
@@ -109,7 +116,7 @@ ul {
     flex-direction: column;
     gap: 16px;
     /*gap coloca espaço entre os elementos*/
-    padding: 24px   0;
+    padding: 24px 0;
 
 }
 
@@ -131,29 +138,33 @@ ul li a {
     text-decoration: none;
     font-weight: 500;
 
-    
 
-    transition: all 0.5s ease; /* Transição aplicada */
-    transform: translateY(0); /* Posição inicial */
+
+    transition: all 0.5s ease;
+    /* Transição aplicada */
+    transform: translateY(0);
+    /* Posição inicial */
 }
 
 /*pseudo-selector*/
 ul li a:hover {
     background: var(--surface-color-hover);
     border: 1.5px solid var(--text-color);
-    transform: translateY(2px); /* Move 10px para baixo */
+    transform: translateY(2px);
+    /* Move 10px para baixo */
 
 }
+
 #social-links {
-display: flex;
-justify-content: center;
-padding: 24px 0;
-font-size: 24px;
-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    font-size: 24px;
+    color: white;
 
 }
 
-#social-links a{
+#social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,3 +181,24 @@ color: white;
 }
 
 /*regra oculta, alguns elementos sao display block e outros display inline e por isso não da para aplicar algumas regras... o block força qualquer outro elemento ficar abaixo dele (ele da toda a largura possivel de tela e força o elemento ficar abaixo dele).... inline deixa em linha...*/
+
+/*animation*/
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: 0;
+    }
+}
